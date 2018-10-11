@@ -91,13 +91,13 @@ In read_csv use a converter function.
     # Product3 object
 
 ##### use apply() to maintain decimal objects
-If you use sum() or average(), Pandas converts back to type float64.
-If you use apply(... sum()) Pandas maintains type object Decimal.
 
-    # sum() is vectorized and fast but doesn't preserve type object (Decimal), changes to float64
+    # sum() is vectorized and fast.
+    # If you use sum() or average() on Decimal objects, Pandas returns type float64.
     # week_sums = product_columns_df.sum(axis=1)
 
-    # apply() may be slower than sum() but preserves type object (Decimal)
+    # apply() may be slower than sum()
+    # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
     week_sums = product_columns_df.apply(lambda x: x.sum(), axis=1)
 
 # References
