@@ -76,6 +76,8 @@ Pandas most common types are int, float64, and "object" (often underlying type i
 ##### use converter to create decimal objects
 In read_csv use a converter function.
 
+    from decimal import Decimal
+    
     def decimal_from_value(value):
         return Decimal(value)
 
@@ -92,12 +94,12 @@ In read_csv use a converter function.
 
 ##### use apply() to maintain decimal objects
 
-    # sum() is vectorized and fast.
     # If you use sum() or average() on Decimal objects, Pandas returns type float64.
+    # sum() is vectorized and fast.
     # week_sums = product_columns_df.sum(axis=1)
 
-    # apply() may be slower than sum()
     # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+    # apply() may be slower than sum()
     week_sums = product_columns_df.apply(lambda x: x.sum(), axis=1)
 
 # References

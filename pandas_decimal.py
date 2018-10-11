@@ -41,12 +41,12 @@ def total_sales(df):
     # slice to omit column 0 'week'
     product_columns_df = df.iloc[:, 1:]
 
-    # sum() is vectorized and fast.
     # If you use sum() or average() on Decimal objects, Pandas returns type float64.
+    # sum() is vectorized and fast.
     # product_column_sums = product_columns_df.sum()
 
-    # apply() may be slower than sum()
     # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+    # apply() may be slower than sum()
     product_column_sums = product_columns_df.apply(lambda x: x.sum())
 
     return product_column_sums
