@@ -1,4 +1,4 @@
-# Pandas with Python Decimal for accurate currency arithmetic
+# Using Pandas with Python Decimal for accurate currency arithmetic
 Examples using decimal in Python and Pandas to maintain more accuracy than float.
 
 ## Background - float type limitations
