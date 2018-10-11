@@ -1,5 +1,5 @@
 # Pandas with Python Decimal for accurate currency arithmetic
-This repo shows examples of float and decimal in Python and Pandas.
+Examples using decimal in Python and Pandas to maintain more accuracy than float.
 
 ## Background - float type limitations
 For numbers with a decimal separator, by default Python uses float and Pandas uses numpy float64.
@@ -33,7 +33,7 @@ Or in unit tests
 But sometimes you may want to maintain decimal accuracy.
 For example you may be adding currency amounts such as a long column of dollars and cents.
 
-## How to avoid some float limitations
+## How to maintain decimal accuracy
 An "old school" workaround for currency uses integer cents.
 Modern solutions use decimal libraries such as Python decimal.Decimal or Swift Decimal or Java BigDecimal.
 
