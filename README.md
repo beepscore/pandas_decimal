@@ -79,13 +79,16 @@ In read_csv use a converter function.
     from decimal import Decimal
     
     def decimal_from_value(value):
+        """
+        may be used as a converter
+        """
         return Decimal(value)
 
     df = pd.read_csv(filename, converters={'Product1': decimal_from_value,
                                            'Product2': decimal_from_value,
                                            'Product3': decimal_from_value})
 
-    # each product type is object, not float64 because it uses Decimal
+    # converter set each product type to "object" (Decimal), not default float64
     print(df.dtypes)
     # Week int64
     # Product1 object
