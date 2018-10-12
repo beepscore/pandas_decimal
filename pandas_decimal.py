@@ -94,10 +94,10 @@ def week_with_highest_sales(df):
 
     # idxmax() doesn't work with type object Decimal, so convert Decimal to numpy float64
     # avoids "TypeError: reduction operation 'argmax' not allowed for this dtype"
-    df['sales'] = df['sales'].astype(np.float64)
+    df['sales_float'] = df['sales'].astype(np.float64)
 
     # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.idxmax.html
-    index_total_max = df['sales'].idxmax()
+    index_total_max = df['sales_float'].idxmax()
     # print(index_total_max)
     # 1
 
