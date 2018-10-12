@@ -64,10 +64,20 @@ def average_sales(df):
     # slice to omit column 0 'week'
     product_columns_df = df.iloc[:, 1:]
 
+    # here mean() returns float64
     # product_column_averages is a series
     product_column_averages = product_columns_df.mean()
+    # sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'numpy.float64'>
 
-    return product_column_averages[0]
+    # using apply(... mean()) also returns float64
+    product_column_averages = product_columns_df.apply(lambda x: x.mean())
+    sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'numpy.float64'>
+
+    return sales_mean
 
 
 def week_with_highest_sales(df):
