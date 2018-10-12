@@ -88,7 +88,7 @@ To add a, b, c you could write a method to return an integer in tenths of cents.
     print(c_int)
     # 125
 
-### Python Decimal library
+### Pandas with Python Decimal module
 Decimal libraries maintain a base 10 representation.
 Many languages have decimal libraries such as Python decimal.Decimal or Swift Decimal or Java BigDecimal.
 
