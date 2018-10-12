@@ -148,12 +148,12 @@ https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.round.ht
 ### How to remove decimal points in pandas
 https://stackoverflow.com/questions/37084812/how-to-remove-decimal-points-in-pandas
 
+### Pandas read_csv converters
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv
+
 ### converters for python pandas
 https://stackoverflow.com/questions/12522963/converters-for-python-pandas#12523035
 
 ### Pandas with decimal
 https://stackoverflow.com/questions/38094820/how-to-create-pandas-series-with-decimal#38094931
-
-### Pandas read_csv converters
-https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv
 
