@@ -80,6 +80,7 @@ For type "object", often the underlying type is a string but it may be another t
 In read_csv use a converter function.
 
     from decimal import Decimal
+    import pandas as pd
     
     def decimal_from_value(value):
         return Decimal(value)
