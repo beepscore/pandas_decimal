@@ -11,6 +11,8 @@ Python's Decimal documentation shows example float inaccuracies.
     a = 1.1 + 2.2
     print(a)
     # 3.3000000000000003
+    print(type(a))
+    # <class 'float'>
 
 Also
 

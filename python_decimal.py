@@ -7,6 +7,8 @@ def demo_float():
     a = 1.1 + 2.2
     print('a', a)
     # a 3.3000000000000003
+    print('type(a)', type(a))
+    # type(a) <class 'float'>
 
     b = 0.1 + 0.1 + 0.1 - 0.3
     print('b', b)
