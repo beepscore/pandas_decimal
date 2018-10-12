@@ -79,8 +79,8 @@ Then after adding ints, divide by 100 to get float dollars.
     print(sum_float)
     # 3.24
 
-CAUTION: c_float has 3 decimal places, removing its decimal multiplies by 1000, not 100
-With integer aritmetic workaround, you need to keep all values consistent.
+CAUTION: c_float has 3 decimal places, removing its decimal multiplies by 1000, not 100.
+With integer arithmetic workaround, you need to keep all values consistent.
 To add a, b, c you could write a method to return an integer in tenths of cents.
 
     c_float = 0.125
