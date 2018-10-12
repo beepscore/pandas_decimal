@@ -4,7 +4,6 @@ Examples using decimal in Python and Pandas to maintain more accuracy than float
 ## Background - float type can't store all decimal numbers exactly
 For numbers with a decimal separator, by default Python uses float and Pandas uses numpy float64.
 Internally float types use a base 2 representation which is convenient for binary computers.
-Float types have a limitation, they can't store all decimal numbers exactly.
 
 Python's Decimal documentation shows example float inaccuracies.
 
