@@ -44,10 +44,14 @@ def total_sales(df):
     # If you use sum() or average() on Decimal objects, Pandas returns type float64.
     # sum() is vectorized and fast.
     # product_column_sums = product_columns_df.sum()
+    # print(product_column_sums.dtypes)
+    # float64
 
     # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
     # apply() may be slower than sum()
     product_column_sums = product_columns_df.apply(lambda x: x.sum())
+    # print(product_column_sums.dtypes)
+    # object
 
     return product_column_sums
 

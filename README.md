@@ -95,12 +95,16 @@ In read_csv use a converter function.
 If you use sum() or average() on Decimal objects, Pandas returns type float64.
 
     # sum() is vectorized and fast.
-    # week_sums = product_columns_df.sum(axis=1)
+    product_column_sums = product_columns_df.sum()
+    print(product_column_sums.dtypes)
+    # float64
 
-If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+Instead you can maintain type object Decimal by using apply(... sum())
 
     # apply() may be slower than sum()
-    week_sums = product_columns_df.apply(lambda x: x.sum(), axis=1)
+    product_column_sums = product_columns_df.apply(lambda x: x.sum())
+    print(product_column_sums.dtypes)
+    # object
 
 ## References
 
