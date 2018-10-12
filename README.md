@@ -92,7 +92,7 @@ In read_csv use a converter function.
     # week int64
     # sales object
 
-##### maintain decimal objects- use apply()
+##### maintain decimal objects for sum - use apply()
 If you use sum() or average() on Decimal objects, Pandas returns type float64.
 
     # sum() is vectorized and fast.
@@ -106,6 +106,27 @@ Instead you can maintain type object Decimal by using apply(... sum())
     product_column_sums = product_columns_df.apply(lambda x: x.sum())
     print(product_column_sums.dtypes)
     # object
+
+##### maintain decimal objects for mean - use sum() and divide by len()
+
+    # mean() returns float64
+    # product_column_averages is a series
+    # product_column_averages = product_columns_df.mean()
+    # sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'numpy.float64'>
+
+    # apply(... mean()) also returns float64
+    # product_column_averages = product_columns_df.apply(lambda x: x.mean(), axis=0)
+    # sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'numpy.float64'>
+
+    # apply(... sum()) and dividing by len(product_columns_df) maintains type Decimal
+    product_column_averages = product_columns_df.apply(lambda x: x.sum(), axis=0) / len(product_columns_df)
+    sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'decimal.Decimal'>
 
 ## References
 

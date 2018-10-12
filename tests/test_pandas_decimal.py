@@ -3,7 +3,6 @@
 import unittest
 import pandas as pd
 import pandas_decimal
-import numpy as np
 from decimal import Decimal
 
 
@@ -30,17 +29,15 @@ class TestSalesPandas(unittest.TestCase):
         self.assertNotEqual(actual[0], 3.3)
 
     def test_average_sales(self):
-        # don't use Decimal here because average_sales doesn't maintain decimal
-        expected = 1.65
+        expected = Decimal('1.65')
         # print('expected', '\n', expected)
 
         actual = pandas_decimal.average_sales(self.df)
         # print('actual', '\n', actual)
 
-        self.assertEqual(type(actual), np.float64)
+        self.assertEqual(type(actual), Decimal)
 
-        # don't use Decimal here because average_sales_per_product_per_week doesn't maintain decimal
-        self.assertAlmostEqual(actual, expected, delta=0.005)
+        self.assertEqual(actual, expected)
 
     def test_week_with_highest_sales(self):
         self.assertEqual(pandas_decimal.week_with_highest_sales(self.df), 1.0)

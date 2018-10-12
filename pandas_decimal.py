@@ -64,18 +64,24 @@ def average_sales(df):
     # slice to omit column 0 'week'
     product_columns_df = df.iloc[:, 1:]
 
-    # here mean() returns float64
+    # mean() returns float64
     # product_column_averages is a series
-    product_column_averages = product_columns_df.mean()
+    # product_column_averages = product_columns_df.mean()
     # sales_mean = product_column_averages[0]
     # print(type(sales_mean))
     # <class 'numpy.float64'>
 
-    # using apply(... mean()) also returns float64
-    product_column_averages = product_columns_df.apply(lambda x: x.mean())
-    sales_mean = product_column_averages[0]
+    # apply(... mean()) also returns float64
+    # product_column_averages = product_columns_df.apply(lambda x: x.mean(), axis=0)
+    # sales_mean = product_column_averages[0]
     # print(type(sales_mean))
     # <class 'numpy.float64'>
+
+    # apply(... sum()) and dividing by len(product_columns_df) maintains type Decimal
+    product_column_averages = product_columns_df.apply(lambda x: x.sum(), axis=0) / len(product_columns_df)
+    sales_mean = product_column_averages[0]
+    # print(type(sales_mean))
+    # <class 'decimal.Decimal'>
 
     return sales_mean
 
