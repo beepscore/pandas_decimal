@@ -9,14 +9,14 @@ Float types have a limitation, they can't store all decimal numbers exactly.
 Python's Decimal documentation shows example float inaccuracies.
 
     a = 1.1 + 2.2
-    print('a', a)
-    # a 3.3000000000000003
+    print(a)
+    # 3.3000000000000003
 
 Also
 
     b = 0.1 + 0.1 + 0.1 - 0.3
-    print('b', b)
-    # b 5.551115123125783e-17
+    print(b)
+    # 5.551115123125783e-17
 
 Float is accurate enough for many uses.
 If you only display a few decimal places then you may not even notice the inaccuracy.
@@ -50,14 +50,15 @@ Decimal libraries maintain a base 10 representation.
 #### in Python
 
     from decimal import Decimal
+    
     x = Decimal('1.1') + Decimal('2.2')
     print(x)
     # 3.3
     print(type(x))
     # <class 'decimal.Decimal'>
-    x == 3.3
+    print(x == 3.3)
     # False
-    x == Decimal('3.3')
+    print(x == Decimal('3.3'))
     # True
 
     y = Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3')
@@ -65,9 +66,9 @@ Decimal libraries maintain a base 10 representation.
     # 0.0
     # print(type(y))
     # <class 'decimal.Decimal'>
-    # y == 0
+    # print(y == 0)
     # True
-    # y == Decimal('0')
+    # print(y == Decimal('0'))
     # True
 
 #### in Pandas
@@ -81,21 +82,14 @@ In read_csv use a converter function.
     from decimal import Decimal
     
     def decimal_from_value(value):
-        """
-        may be used as a converter
-        """
         return Decimal(value)
 
-    df = pd.read_csv(filename, converters={'Product1': decimal_from_value,
-                                           'Product2': decimal_from_value,
-                                           'Product3': decimal_from_value})
+    df = pd.read_csv(filename, converters={'sales': decimal_from_value})
 
-    # converter set each product type to "object" (Decimal), not default float64
+    # converter set sales type to "object" (Decimal), not default float64
     print(df.dtypes)
-    # Week int64
-    # Product1 object
-    # Product2 object
-    # Product3 object
+    # week int64
+    # sales object
 
 ##### maintain decimal objects- use apply()
 If you use sum() or average() on Decimal objects, Pandas returns type float64.
