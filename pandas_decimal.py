@@ -47,7 +47,7 @@ def total_sales(df):
     # print(product_column_sums.dtypes)
     # float64
 
-    # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+    # Instead you can maintain type object Decimal by using apply(... sum())
     # apply() may be slower than sum()
     product_column_sums = product_columns_df.apply(lambda x: x.sum())
     # print(product_column_sums.dtypes)
