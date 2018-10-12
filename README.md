@@ -6,7 +6,7 @@ For numbers with a decimal separator, by default Python uses float and Pandas us
 Internally float types use a base 2 representation which is convenient for binary computers.
 Float types have a limitation, they can't store all decimal numbers exactly.
 
-Using Python float
+Python's Decimal documentation shows example float inaccuracies.
 
     a = 1.1 + 2.2
     print('a', a)
@@ -30,10 +30,10 @@ Or in unit tests
 
     self.assertAlmostEqual(a, 3.3, delta=0.001)
 
-But sometimes you may want to maintain decimal accuracy.
-For example you may be adding currency amounts such as a long column of dollars and cents.
+## Maintaining decimal accuracy
+Sometimes you may want to maintain decimal accuracy.
+For example you may be adding currency amounts such as a long column of dollars and cents and want a result that is accurate to the penny.
 
-## How to maintain decimal accuracy
 An "old school" workaround for currency uses integer cents.
 Modern solutions use decimal libraries such as Python decimal.Decimal or Swift Decimal or Java BigDecimal.
 
@@ -71,9 +71,11 @@ Decimal libraries maintain a base 10 representation.
     # True
 
 #### in Pandas
-Pandas most common types are int, float64, and "object" (often underlying type is a string but may be another type like Decimal).
+Pandas can use Decimal, but requires some care to create and maintain Decimal objects.
+Pandas most common types are int, float64, and "object".
+For type "object", often the underlying type is a string but it may be another type like Decimal.
 
-##### use converter to create decimal objects
+##### create decimal objects- use converter
 In read_csv use a converter function.
 
     from decimal import Decimal
@@ -95,38 +97,39 @@ In read_csv use a converter function.
     # Product2 object
     # Product3 object
 
-##### use apply() to maintain decimal objects
+##### maintain decimal objects- use apply()
+If you use sum() or average() on Decimal objects, Pandas returns type float64.
 
-    # If you use sum() or average() on Decimal objects, Pandas returns type float64.
     # sum() is vectorized and fast.
     # week_sums = product_columns_df.sum(axis=1)
 
-    # If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+If you use apply(... sum()) on Decimal objects, Pandas returns type object Decimal.
+
     # apply() may be slower than sum()
     week_sums = product_columns_df.apply(lambda x: x.sum(), axis=1)
 
-# References
+## References
 
-## Python version 3.6.1
+### Python version 3.6.1
 
-## Python decimal
+### Python decimal
 https://docs.python.org/3.7/library/decimal.html
 
-## Pandas version 0.23.0
+### Pandas version 0.23.0
 
-## Pandas.DataFrame.round
+### Pandas.DataFrame.round
 Round a DataFrame to a variable number of decimal places.
 https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.round.html
 
-## How to remove decimal points in pandas
+### How to remove decimal points in pandas
 https://stackoverflow.com/questions/37084812/how-to-remove-decimal-points-in-pandas
 
-## converters for python pandas
+### converters for python pandas
 https://stackoverflow.com/questions/12522963/converters-for-python-pandas#12523035
 
-## Pandas with decimal
+### Pandas with decimal
 https://stackoverflow.com/questions/38094820/how-to-create-pandas-series-with-decimal#38094931
 
-## Pandas read_csv converters
+### Pandas read_csv converters
 https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv
 
