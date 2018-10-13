@@ -12,7 +12,7 @@ def int_by_removing_decimal(a_float):
 
     a_str = str(a_float).replace(decimal_separator, '')
     a_integer = int(a_str)
-    # print(type a_integer))
+    # print(type(a_integer))
     # <class 'int'>
 
     return a_integer
